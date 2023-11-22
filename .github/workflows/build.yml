@@ -5,4 +5,10 @@ jobs:
   Build-our-app:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: "setup node"
+        uses: actions/checkout@v4
+      - name: "Check dotnet cli"
+        uses: cd WebApplication1; ls
+      - name: "Check npm cli"
+        uses: cd ../my-app; ls
+
