@@ -1,14 +1,26 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
 on: [push]
+
 jobs:
   Build-our-app:
     runs-on: ubuntu-latest
-    steps:
-      - name: "setup node"
-        uses: actions/checkout@v4
-      - name: "Check dotnet cli"
-        uses: cd WebApplication1; ls
-      - name: "Check npm cli"
-        uses: cd ../my-app; ls
 
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14' # Specify the Node.js version you want to use
+
+      - name: Check dotnet cli
+        run: |
+          cd WebApplication1
+          ls
+
+      - name: Check npm cli
+        run: |
+          cd my-app
+          ls
